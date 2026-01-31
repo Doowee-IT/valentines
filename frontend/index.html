@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Sparkles Container -->
+    <div class="sparkles-container" id="sparklesContainer"></div>
+    
+    <!-- Valentine's Countdown -->
+    <div class="countdown-widget" id="countdownWidget">
+        <div class="countdown-content">
+            <p class="countdown-label">Valentine's Day</p>
+            <div class="countdown-timer" id="countdownTimer">Loading...</div>
+        </div>
+    </div>
+    
+    <!-- Floating Love Quote -->
+    <div class="love-quote" id="loveQuote">
+        <p class="quote-text"></p>
+    </div>
+
+    <!-- Main Invitation Card -->
+    <div class="invitation-container" id="invitationCard">
+        <div class="notebook-container" id="notebookContainer">
+            <div class="notebook-cover" id="notebookCover">
+                <div class="cover-content">
+                    <div class="elegant-ornament top-ornament">✦ ✧ ✦</div>
+                    <div class="floating-petals">
+                        <span class="petal">🌸</span>
+                        <span class="petal">🌸</span>
+                        <span class="petal">🌸</span>
+                    </div>
+                    <h1 class="cover-title">To Someone Special</h1>
+                    <div class="subtitle-wrapper">
+                        <p class="cover-subtitle">A heartfelt message crafted just for you</p>
+                        <p class="cover-tagline">Because you deserve to know how special you are</p>
+                    </div>
+                    <div class="cover-decoration">
+                        <div class="heart-cluster">
+                            <span class="heart-deco mini">♡</span>
+                            <span class="heart-deco main">♡</span>
+                            <span class="heart-deco mini">♡</span>
+                        </div>
+                    </div>
+                    <div class="elegant-ornament bottom-ornament">✦ ✧ ✦</div>
+                    <p class="swipe-hint"></p>
+                </div>
+            </div>
+            <div class="notebook-page">
+                <div class="page-shimmer"></div>
+                <div class="page-content">
+                    <div class="entrance-icon">✨</div>
+                    <p class="page-text">Step into our story...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Letter Content (Hidden initially) -->
+    <div class="letter-content" id="letterContent">
+        <button class="close-btn" id="closeBtn">×</button>
+        <div class="letter-inner">
+            <div class="letter-header-ornament">✧ ･ﾟ: *✧･ﾟ:*</div>
+            <h1 class="fancy-title">To the Girl Who Changed Everything</h1>
+            <div class="message">
+                <p class="opening-line">In a world full of ordinary moments, you make everything feel extraordinary.</p>
+                <p>There’s something special about the way you see the world. You understand people deeply, and you’re always kind and warm. Your emotional intelligence is rare and beautiful, and it’s one of the many reasons I care about you so much.</p>
+                <p>You have a gift for making people feel seen and understood. The way you listen, the way you care, and the way you handle emotions with such calm and kindness is truly amazing.</p>
+                <p>Every smile, every laugh, and every thoughtful word reminds me how lucky I am to know someone as genuinely beautiful as you.</p>
+                <p class="emphasis">I made this letter just for you, because you deserve something special.</p>
+            </div>
+            <button class="continue-btn" id="continueBtn">Discover Our Journey <span class="btn-icon">→</span></button>
+        </div>
+    </div>
+
+    <!-- Memory Section -->
+    <div class="memory-section" id="memorySection">
+        <button class="back-btn" id="backBtn">← Back</button>
+        
+        <div class="memory-header">
+            <h1 class="memory-title">Every Moment With You ✨</h1>
+            <p class="memory-subtitle">These memories are my favorite treasures 💖</p>
+        </div>
+
+        <div class="memories-container">
+            <!-- Memory Card 1 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="1.jpg" data-caption="When I First Saw You ✨">
+                    <img src="1.jpg" alt="When I First Saw You" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>When I First Saw You ✨</h3>
+                    <p>First Pic Simbang Gabi with you</p>
+                </div>
+            </div>
+
+            <!-- Memory Card 2 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="2.jpg" data-caption="Our First Date 💫">
+                    <img src="2.jpg" alt="Our First Date" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>Our First Date 💫</h3>
+                    <p>A memorable first date filled with bonding and connection.</p>
+                </div>
+            </div>
+
+            <!-- Memory Card 3 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="3.jpg" data-caption="That Perfect Day 🌸">
+                    <img src="3.jpg" alt="That Perfect Day" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>That Perfect Day 🌸</h3>
+                    <p>Remember this? Your smile was so bright, your laugh so genuine. This is when I realized I never want to stop making you smile.</p>
+                </div>
+            </div>
+
+            <!-- Memory Card 4 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="4.jpg" data-caption="Just Us Two 💕">
+                    <img src="4.jpg" alt="Just Us Two" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>Just Us Two 💕</h3>
+                    <p>We pray together and support each other through everything.</p>
+                </div>
+            </div>
+
+            <!-- Memory Card 5 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="5.jpg" data-caption="Making Memories 🎉">
+                    <img src="5.jpg" alt="Making Memories" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>Making Memories 🎉</h3>
+                    <p>Every celebration with you feels magical. You bring so much joy and light into my life, making every moment special.</p>
+                </div>
+            </div>
+
+            <!-- Memory Card 6 -->
+            <div class="memory-card">
+                <div class="photo-placeholder photo-clickable" data-photo="6.jpg" data-caption="Right Now 💖">
+                    <img src="6.jpg" alt="Right Now" class="memory-photo">
+                </div>
+                <div class="memory-text">
+                    <h3>Right Now 💖</h3>
+                    <p>Every day with you is better than the last. I can't wait to create more beautiful memories together. Our story is just beginning...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Big Question -->
+        <div class="question-section">
+            <div class="question-card">
+                <h2 class="question-title">So, beautiful... here's what I wanted to ask you...</h2>
+                <h1 class="big-question">Will You Be My Valentine? 💝</h1>
+                <div class="buttons-container">
+                    <button class="answer-btn yes-btn" id="yesBtn">Yes! 💕</button>
+                    <button class="answer-btn no-btn" id="noBtn">No!  😔 </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Response Overlay -->
+    <div class="response-overlay" id="responseOverlay">
+        <div class="response-content">
+            <h1 class="response-title" id="responseTitle">🎉 Yay! 🎉</h1>
+            <p class="response-message" id="responseMessage">You just made my day! I can't wait to make this Valentine's Day special with you! 💕</p>
+            <button class="response-btn" id="responseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Photo Lightbox -->
+    <div class="photo-lightbox" id="photoLightbox">
+        <button class="lightbox-close" id="lightboxClose">×</button>
+        <img src="" alt="Full size photo" id="lightboxImage">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
