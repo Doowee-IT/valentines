@@ -190,15 +190,46 @@ yesBtn.addEventListener('click', async () => {
     }
 });
 
-// Handle Maybe button
-noBtn.addEventListener('click', async () => {
-    // Send response to backend
-    await sendResponseToServer('maybe');
+// Handle Maybe button - make it move instead of submitting
+noBtn.addEventListener('click', () => {
+    noButtonAttempts++;
     
-    showResponse(
-        '😊 That\'s okay! 😊',
-        "I appreciate your honesty! Maybe I can ask you again another time? Either way, you're still amazing! 💕"
-    );
+    // Change button text
+    if (noButtonAttempts < noButtonTexts.length) {
+        noBtn.textContent = noButtonTexts[noButtonAttempts];
+    } else {
+        const funnyTexts = ['Still No? 😅', 'Try Yes! 💕', 'Wrong button! ✨', 'Come on! 🥺', 'Really? 😢'];
+        noBtn.textContent = funnyTexts[noButtonAttempts % funnyTexts.length];
+    }
+    
+    // Get button and container dimensions
+    const container = document.querySelector('.buttons-container');
+    const containerRect = container.getBoundingClientRect();
+    const buttonRect = noBtn.getBoundingClientRect();
+    
+    // Calculate max movement to keep button in container
+    const maxX = (containerRect.width - buttonRect.width) / 2;
+    const maxY = 100;
+    
+    // Increase movement range and speed with each attempt
+    const movementMultiplier = Math.min(1 + (noButtonAttempts * 0.3), 3);
+    const randomX = (Math.random() * maxX * 2 - maxX) * movementMultiplier;
+    const randomY = (Math.random() * maxY * 2 - maxY) * movementMultiplier;
+    
+    // Apply transformation
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${Math.max(0.7, 1 - noButtonAttempts * 0.02)})`;
+    noBtn.style.transition = 'transform 0.3s ease';
+    
+    // Make Yes button bigger and more attractive
+    if (yesBtn) {
+        yesBtn.style.transform = `scale(${1 + noButtonAttempts * 0.05})`;
+        yesBtn.style.transition = 'transform 0.3s ease';
+    }
+    
+    // After many attempts, make it fade
+    if (noButtonAttempts > 5) {
+        noBtn.style.opacity = Math.max(0.3, 1 - (noButtonAttempts - 5) * 0.1);
+    }
 });
 
 // Send response to NestJS backend
@@ -269,50 +300,7 @@ const noButtonTexts = [
     "Come on... 🙏"
 ];
 
-noBtn.addEventListener('mouseover', () => {
-    noButtonAttempts++;
-    
-    // Change button text
-    if (noButtonAttempts < noButtonTexts.length) {
-        noBtn.textContent = noButtonTexts[noButtonAttempts];
-    }
-    
-    // Get button and container dimensions
-    const container = document.querySelector('.buttons-container');
-    const containerRect = container.getBoundingClientRect();
-    const buttonRect = noBtn.getBoundingClientRect();
-    
-    // Calculate max movement to keep button in container
-    const maxX = (containerRect.width - buttonRect.width) / 2;
-    const maxY = 100;
-    
-    // Increase movement range and speed with each attempt
-    const movementMultiplier = Math.min(1 + (noButtonAttempts * 0.3), 3);
-    const randomX = (Math.random() * maxX * 2 - maxX) * movementMultiplier;
-    const randomY = (Math.random() * maxY * 2 - maxY) * movementMultiplier;
-    
-    // Apply transformation
-    noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${1 - noButtonAttempts * 0.02})`;
-    noBtn.style.transition = 'transform 0.3s ease';
-    
-    // Make Yes button bigger and more attractive
-    if (yesBtn) {
-        yesBtn.style.transform = `scale(${1 + noButtonAttempts * 0.05})`;
-        yesBtn.style.transition = 'transform 0.3s ease';
-    }
-    
-    // After many attempts, make it really hard
-    if (noButtonAttempts > 5) {
-        noBtn.style.opacity = Math.max(0.3, 1 - (noButtonAttempts - 5) * 0.1);
-    }
-});
 
-// Reset position when mouse leaves
-noBtn.addEventListener('mouseleave', () => {
-    setTimeout(() => {
-        noBtn.style.transform = `scale(${1 - noButtonAttempts * 0.02})`;
-    }, 300);
-});
 
 // Photo Lightbox Functionality
 const photoLightbox = document.getElementById('photoLightbox');

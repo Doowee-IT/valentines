@@ -874,10 +874,6 @@ body {
     transition: left 0.6s ease;
 }
 
-.answer-btn:hover::before {
-    left: 120%;
-}
-
 .yes-btn {
     background: linear-gradient(135deg, #ff9a9e 0%, #ffb8a0 50%, #ffa8ac 100%);
     color: white;
@@ -887,12 +883,8 @@ body {
         inset 0 -2px 5px rgba(200, 100, 100, 0.2);
 }
 
-.yes-btn:hover {
-    transform: translateY(-8px) scale(1.08);
-    box-shadow: 
-        0 15px 45px rgba(255, 154, 158, 0.7),
-        inset 0 2px 5px rgba(255, 255, 255, 0.5),
-        inset 0 -2px 5px rgba(200, 100, 100, 0.3);
+.yes-btn:active {
+    transform: scale(0.98);
 }
 
 .no-btn {
@@ -904,12 +896,8 @@ body {
         inset 0 -2px 5px rgba(140, 180, 200, 0.2);
 }
 
-.no-btn:hover {
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 
-        0 12px 35px rgba(168, 216, 234, 0.7),
-        inset 0 2px 5px rgba(255, 255, 255, 0.7),
-        inset 0 -2px 5px rgba(140, 180, 200, 0.3);
+.no-btn:active {
+    transform: scale(0.98);
 }
 
 /* Response Overlay */
