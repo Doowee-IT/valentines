@@ -900,7 +900,7 @@ body {
     transform: scale(0.98);
 }
 
-/* Response Overlay */
+/* Response Overlay - v2 */
 .response-overlay {
     position: fixed;
     top: 0;
