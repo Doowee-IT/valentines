@@ -30,8 +30,13 @@ function createSparkle() {
 }
 
 // Create hearts and sparkles periodically
-setInterval(createHeart, 500);
-setInterval(createSparkle, 800);
+// Reduce frequency on mobile for better performance
+const isMobile = window.innerWidth <= 768;
+const heartInterval = isMobile ? 1000 : 500;
+const sparkleInterval = isMobile ? 1500 : 800;
+
+setInterval(createHeart, heartInterval);
+setInterval(createSparkle, sparkleInterval);
 
 // Valentine's Day Countdown
 function updateCountdown() {
@@ -95,18 +100,26 @@ const responseBtn = document.getElementById('responseBtn');
 // Swipe and click to open notebook
 let touchStartX = 0;
 let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
 
 notebookContainer.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
-});
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
 
 notebookContainer.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
     handleSwipe();
-});
+}, { passive: true });
 
 function handleSwipe() {
-    if (touchStartX - touchEndX > 50) {
+    const swipeDistanceX = touchStartX - touchEndX;
+    const swipeDistanceY = Math.abs(touchStartY - touchEndY);
+    
+    // Only trigger if horizontal swipe is significant and vertical movement is minimal
+    if (swipeDistanceX > 50 && swipeDistanceY < 50) {
         openNotebook();
     }
 }
@@ -138,7 +151,12 @@ continueBtn.addEventListener('click', () => {
     letterContent.classList.remove('show');
     setTimeout(() => {
         memorySection.classList.add('show');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Smooth scroll to top
+        if (window.innerWidth <= 768) {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }, 300);
 });
 
@@ -148,6 +166,12 @@ backBtn.addEventListener('click', () => {
     setTimeout(() => {
         letterContent.classList.add('show');
     }, 300);
+    // Smooth scroll to top
+    if (window.innerWidth <= 768) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 });
 
 // Handle Yes button
