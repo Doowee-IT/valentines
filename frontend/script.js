@@ -97,6 +97,83 @@ const responseTitle = document.getElementById('responseTitle');
 const responseMessage = document.getElementById('responseMessage');
 const responseBtn = document.getElementById('responseBtn');
 
+// Book page navigation
+const prevPageBtn = document.getElementById('prevPage');
+const nextPageBtn = document.getElementById('nextPage');
+const pageIndicator = document.getElementById('pageIndicator');
+let currentPage = 1;
+const totalPages = 7;
+
+function updateBookPage() {
+    const pages = document.querySelectorAll('.book-page');
+    
+    pages.forEach((page, index) => {
+        const pageNum = index + 1;
+        page.classList.remove('active', 'prev', 'next');
+        
+        if (pageNum === currentPage) {
+            page.classList.add('active');
+        } else if (pageNum < currentPage) {
+            page.classList.add('prev');
+        } else if (pageNum > currentPage) {
+            page.classList.add('next');
+        }
+    });
+    
+    pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+    prevPageBtn.disabled = currentPage === 1;
+    nextPageBtn.disabled = currentPage === totalPages;
+    
+    // Add smooth scroll behavior
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+prevPageBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        updateBookPage();
+    }
+});
+
+nextPageBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+        currentPage++;
+        updateBookPage();
+    }
+});
+
+// Swipe support for book pages
+let bookTouchStartX = 0;
+let bookTouchEndX = 0;
+
+document.getElementById('memoryBook').addEventListener('touchstart', (e) => {
+    bookTouchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.getElementById('memoryBook').addEventListener('touchend', (e) => {
+    bookTouchEndX = e.changedTouches[0].screenX;
+    handleBookSwipe();
+}, { passive: true });
+
+function handleBookSwipe() {
+    const swipeDistance = bookTouchStartX - bookTouchEndX;
+    
+    if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0 && currentPage < totalPages) {
+            // Swiped left - next page
+            currentPage++;
+            updateBookPage();
+        } else if (swipeDistance < 0 && currentPage > 1) {
+            // Swiped right - previous page
+            currentPage--;
+            updateBookPage();
+        }
+    }
+}
+
+// Initialize book pages
+updateBookPage();
+
 // Swipe and click to open notebook
 let touchStartX = 0;
 let touchEndX = 0;
@@ -286,16 +363,17 @@ const lightboxImage = document.getElementById('lightboxImage');
 const lightboxCaption = document.getElementById('lightboxCaption');
 const lightboxClose = document.getElementById('lightboxClose');
 
-// Add click event to all clickable photos
-document.querySelectorAll('.photo-clickable').forEach(photo => {
-    photo.addEventListener('click', () => {
+// Add click event to all clickable photos (using event delegation for dynamic content)
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.photo-clickable')) {
+        const photo = e.target.closest('.photo-clickable');
         const photoSrc = photo.getAttribute('data-photo');
         const photoCaption = photo.getAttribute('data-caption');
         
         lightboxImage.src = photoSrc;
         lightboxCaption.textContent = photoCaption;
         photoLightbox.classList.add('show');
-    });
+    }
 });
 
 // Close lightbox

@@ -91,82 +91,102 @@
             <p class="memory-subtitle">These memories are my favorite treasures 💖</p>
         </div>
 
-        <div class="memories-container">
-            <!-- Memory Card 1 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="1.jpg" data-caption="When I First Saw You ✨">
-                    <img src="1.jpg" alt="When I First Saw You" class="memory-photo">
+        <!-- Memory Book Container -->
+        <div class="memory-book-container">
+            <button class="page-nav-btn prev-page" id="prevPage">←</button>
+            <button class="page-nav-btn next-page" id="nextPage">→</button>
+            
+            <div class="page-indicator" id="pageIndicator">Page 1 of 7</div>
+            
+            <div class="memory-book" id="memoryBook">
+                <!-- Page 1 - Memory 1 -->
+                <div class="book-page active" data-page="1">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="1.jpg" data-caption="When I First Saw You ✨">
+                            <img src="1.jpg" alt="When I First Saw You" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>When I First Saw You ✨</h3>
+                            <p>First Pic Simbang Gabi with you</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>When I First Saw You ✨</h3>
-                    <p>First Pic Simbang Gabi with you</p>
-                </div>
-            </div>
 
-            <!-- Memory Card 2 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="2.jpg" data-caption="Our First Date 💫">
-                    <img src="2.jpg" alt="Our First Date" class="memory-photo">
+                <!-- Page 2 - Memory 2 -->
+                <div class="book-page" data-page="2">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="2.jpg" data-caption="Our First Date 💫">
+                            <img src="2.jpg" alt="Our First Date" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>Our First Date 💫</h3>
+                            <p>A memorable first date filled with bonding and connection.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>Our First Date 💫</h3>
-                    <p>A memorable first date filled with bonding and connection.</p>
-                </div>
-            </div>
 
-            <!-- Memory Card 3 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="3.jpg" data-caption="That Perfect Day 🌸">
-                    <img src="3.jpg" alt="That Perfect Day" class="memory-photo">
+                <!-- Page 3 - Memory 3 -->
+                <div class="book-page" data-page="3">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="3.jpg" data-caption="That Perfect Day 🌸">
+                            <img src="3.jpg" alt="That Perfect Day" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>That Perfect Day 🌸</h3>
+                            <p>Remember this? Your smile was so bright, your laugh so genuine. This is when I realized I never want to stop making you smile.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>That Perfect Day 🌸</h3>
-                    <p>Remember this? Your smile was so bright, your laugh so genuine. This is when I realized I never want to stop making you smile.</p>
-                </div>
-            </div>
 
-            <!-- Memory Card 4 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="4.jpg" data-caption="Just Us Two 💕">
-                    <img src="4.jpg" alt="Just Us Two" class="memory-photo">
+                <!-- Page 4 - Memory 4 -->
+                <div class="book-page" data-page="4">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="4.jpg" data-caption="Just Us Two 💕">
+                            <img src="4.jpg" alt="Just Us Two" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>Just Us Two 💕</h3>
+                            <p>We pray together and support each other through everything.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>Just Us Two 💕</h3>
-                    <p>We pray together and support each other through everything.</p>
-                </div>
-            </div>
 
-            <!-- Memory Card 5 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="5.jpg" data-caption="Making Memories 🎉">
-                    <img src="5.jpg" alt="Making Memories" class="memory-photo">
+                <!-- Page 5 - Memory 5 -->
+                <div class="book-page" data-page="5">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="5.jpg" data-caption="Making Memories 🎉">
+                            <img src="5.jpg" alt="Making Memories" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>Making Memories 🎉</h3>
+                            <p>Every celebration with you feels magical. You bring so much joy and light into my life, making every moment special.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>Making Memories 🎉</h3>
-                    <p>Every celebration with you feels magical. You bring so much joy and light into my life, making every moment special.</p>
-                </div>
-            </div>
 
-            <!-- Memory Card 6 -->
-            <div class="memory-card">
-                <div class="photo-placeholder photo-clickable" data-photo="6.jpg" data-caption="Right Now 💖">
-                    <img src="6.jpg" alt="Right Now" class="memory-photo">
+                <!-- Page 6 - Memory 6 -->
+                <div class="book-page" data-page="6">
+                    <div class="page-content-wrapper">
+                        <div class="photo-container photo-clickable" data-photo="6.jpg" data-caption="Right Now 💖">
+                            <img src="6.jpg" alt="Right Now" class="memory-photo">
+                        </div>
+                        <div class="page-text">
+                            <h3>Right Now 💖</h3>
+                            <p>Every day with you is better than the last. I can't wait to create more beautiful memories together. Our story is just beginning...</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="memory-text">
-                    <h3>Right Now 💖</h3>
-                    <p>Every day with you is better than the last. I can't wait to create more beautiful memories together. Our story is just beginning...</p>
-                </div>
-            </div>
-        </div>
 
-        <!-- The Big Question -->
-        <div class="question-section">
-            <div class="question-card">
-                <h2 class="question-title">So, beautiful... here's what I wanted to ask you...</h2>
-                <h1 class="big-question">Will You Be My Valentine? 💝</h1>
-                <div class="buttons-container">
-                    <button class="answer-btn yes-btn" id="yesBtn">Yes! 💕</button>
-                    <button class="answer-btn no-btn" id="noBtn">No!  😔 </button>
+                <!-- Page 7 - The Big Question -->
+                <div class="book-page" data-page="7">
+                    <div class="page-content-wrapper question-page">
+                        <h2 class="question-title">So, beautiful... here's what I wanted to ask you...</h2>
+                        <h1 class="big-question">Will You Be My Valentine? 💝</h1>
+                        <div class="buttons-container">
+                            <button class="answer-btn yes-btn" id="yesBtn">Yes! 💕</button>
+                            <button class="answer-btn no-btn" id="noBtn">No!  😔 </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
